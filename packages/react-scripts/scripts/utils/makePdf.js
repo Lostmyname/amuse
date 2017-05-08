@@ -3,22 +3,21 @@
 const chrome = require('chrome-remote-interface');
 const launchChrome = require('./launchChrome');
 
-module.exports = async function makePdf(url) {
-  return new Promise(async (resolve, reject) => {
-    try {
-      const launcher = await launchChrome();
-      const protocol = await chrome();
+module.exports = function makePdf(url) {
+  return launchChrome().then(launcher => {
+    return chrome().then(protocol => {
       const { Page } = protocol;
-      await Page.enable();
-      Page.navigate({ url });
-      await Page.loadEventFired();
-      const result = await Page.printToPDF();
-      const pdf = Buffer.from(result.data, 'base64');
-      protocol.close();
-      launcher.kill();
-      resolve(pdf);
-    } catch (err) {
-      reject(err);
-    }
+      return Page.enable().then(() => {
+        Page.navigate({ url });
+        return Page.loadEventFired().then(() => {
+          return Page.printToPDF().then(result => {
+            const pdf = Buffer.from(result.data, 'base64');
+            protocol.close();
+            launcher.kill();
+            return pdf;
+          });
+        });
+      });
+    });
   });
 };
