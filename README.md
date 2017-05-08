@@ -2,6 +2,15 @@
 
 This is a Sunday night hack to see if I can create a PDF renderer using React and headless Chrome.
 
+## Try it out
+
+```sh
+npm install -g create-react-app
+create-react-app --scripts-version @lostmyname/amuse-react-scripts my-personalised-book
+```
+
+Then follow the instructions in your console.
+
 ## Aims
 
 - Can be run simply in cloud or development environments
