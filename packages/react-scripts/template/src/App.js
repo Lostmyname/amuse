@@ -11,7 +11,10 @@ class App extends Component {
           <h2>Welcome to React</h2>
         </div>
         <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
+          To get started developing, edit <code>src/App.js</code> and save to reload.
+        </p>
+        <p className="App-intro">
+          To create a PDF, go to <a href="/?pdf=true">http://locahost:4000/?pdf=true</a>
         </p>
       </div>
     );
