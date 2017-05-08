@@ -7,10 +7,14 @@
  * of patent rights can be found in the PATENTS file in the same directory.
  */
 
-'use strict';
+import React from 'react';
+import './assets/style.css';
+import { test, version } from 'test-integrity';
 
-function clearConsole() {
-  process.stdout.write(process.platform === 'win32' ? '\x1Bc' : '\x1B[2J\x1B[3J\x1B[H');
-}
-
-module.exports = clearConsole;
+export default () => {
+  const v = version();
+  if (!test() || v !== '2.0.0') {
+    throw new Error('Functionality test did not pass.');
+  }
+  return <p id="feature-linked-modules">{v}</p>;
+};
