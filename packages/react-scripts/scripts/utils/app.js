@@ -17,7 +17,7 @@ module.exports = app => {
 
       makePdf(pageUrl).then(pdf => {
         const filepath = `tmp/page${req.query.page || 0}.pdf`;
-        mkdirp.sync('tmp');
+        mkdirp.sync(path.resolve('tmp'));
         fs.writeFileSync(filepath, pdf);
         res.sendFile(path.resolve(filepath));
       });
