@@ -3,6 +3,7 @@
 const fs = require('fs');
 const path = require('path');
 const url = require('url');
+const mkdirp = require('mkdirp');
 const makePdf = require('./makePdf');
 
 module.exports = app => {
@@ -16,6 +17,7 @@ module.exports = app => {
 
       makePdf(pageUrl).then(pdf => {
         const filepath = `tmp/page${req.query.page || 0}.pdf`;
+        mkdirp.sync('tmp');
         fs.writeFileSync(filepath, pdf);
         res.sendFile(path.resolve(filepath));
       });
