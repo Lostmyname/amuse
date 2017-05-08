@@ -1,9 +1,8 @@
 {
-  "name": "react-scripts",
-  "version": "0.9.4",
+  "name": "@lostmyname/amuse-react-scripts",
+  "version": "0.1.0",
   "description": "Configuration and scripts for Create React App.",
-  "repository": "facebookincubator/create-react-app",
-  "license": "BSD-3-Clause",
+  "repository": "lostmyname-labs/amuse",
   "engines": {
     "node": ">=4"
   },
